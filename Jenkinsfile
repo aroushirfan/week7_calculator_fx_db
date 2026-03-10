@@ -13,29 +13,29 @@ pipeline {
         stage('Build JAR') {
             steps {
                 echo "Building Maven project..."
-                sh 'mvn -DskipTests clean package'
+                bat 'mvn -DskipTests clean package'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 echo "Building Docker image..."
-                sh 'docker build -t aroush/sum-product-fx .'
+                bat 'docker build -t yourdockerhubusername/sum-product-fx .'
             }
         }
 
         stage('Docker Compose Up') {
             steps {
                 echo "Starting containers..."
-                sh 'docker compose down || true'
-                sh 'docker compose up -d'
+                bat 'docker compose down || true'
+                bat 'docker compose up -d'
             }
         }
 
         stage('Verify Containers') {
             steps {
                 echo "Listing running containers..."
-                sh 'docker ps'
+                bat 'docker ps'
             }
         }
     }
