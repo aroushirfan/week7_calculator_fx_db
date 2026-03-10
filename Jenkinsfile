@@ -20,7 +20,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 echo "Building Docker image..."
-                bat 'docker build -t yourdockerhubusername/sum-product-fx .'
+                bat 'docker build -t aroush/sum-product-fx .'
             }
         }
 
